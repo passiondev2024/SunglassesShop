@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class CatalogComponent {
 
-  // да се subcribe-на за observable
+ 
 }
