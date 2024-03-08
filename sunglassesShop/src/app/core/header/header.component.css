@@ -2,6 +2,7 @@
     width: 85em;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
@@ -20,6 +21,11 @@ ul li a {
     font-family: Bebas Neue;
     text-decoration: none;
     color: black
+}
+
+ul li a:hover {
+    font-size: 2em;
+    text-decoration: underline;
 }
 
 .img-container {
