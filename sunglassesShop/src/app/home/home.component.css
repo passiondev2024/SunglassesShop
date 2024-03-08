@@ -6,7 +6,7 @@
     gap: 20em;
     background: url(https://images.unsplash.com/photo-1584036553516-bf83210aa16c?q=80&w=1280&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
 }
 
@@ -16,9 +16,7 @@ h1{
     padding-top: 1em;
 }
 
-span {
-    margin-bottom: 5em;
-}
+
 
 a {
     display: block;

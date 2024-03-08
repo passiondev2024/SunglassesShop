@@ -1,0 +1,32 @@
+.site-footer{
+    display: flex;
+    justify-content: space-between;
+    margin: 1em 2em;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em
+}
+
+h3 {
+    font-family: Bebas Neue;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+p {
+    font-family: Roboto Condensed;
+    font-size: 1.2em;
+}
+
+a {
+    font-family: Roboto Condensed;
+    font-weight: bold;
+    color: black
+}
+
+i {
+    margin-right: 0.5em;
+}
