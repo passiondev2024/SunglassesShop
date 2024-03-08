@@ -1,1 +1,7 @@
-<p>catalog works!</p>
+<div *ngIf="isEmptyCollection" class="emptyCollectionContainer">
+    <p class="message">{{emptyCollectionMessage}}</p>
+    <span><a routerLink="/create">Create</a></span>
+</div>
+
+
+<p *ngIf="!isEmptyCollection">catalog works!</p>

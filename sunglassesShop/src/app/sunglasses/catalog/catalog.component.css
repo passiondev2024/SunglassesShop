@@ -1,0 +1,34 @@
+.emptyCollectionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.message {
+    font-family: Kanit;
+    font-size: 5em;
+    margin-top: 3.5em;
+}
+
+span {
+    display: inline-block;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-family: Bebas Neue;
+    color: black;
+    padding: 0.3em 1.5em;
+    border: 1px solid black;
+    border-radius: 0.5em;  
+}
+
+a:hover {
+    background: black;
+    color: white;
+    font-size: 2em;
+    letter-spacing: 0.3em;
+}
