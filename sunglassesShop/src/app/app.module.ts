@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
 import { RouterOutlet } from '@angular/router';
 import { SunglassesModule } from './sunglasses/sunglasses.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SunglassesModule } from './sunglasses/sunglasses.module';
     AppRoutingModule,
     CoreModule,
     RouterOutlet,
-    SunglassesModule
+    SunglassesModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
