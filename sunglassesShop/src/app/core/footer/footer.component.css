@@ -1,13 +1,15 @@
 .site-footer{
     display: flex;
     justify-content: space-between;
-    margin: 1em 2em;
+    padding: 1em 2em;
+    border-top: 1px solid black;
+    background: rgb(59, 153, 59);
 }
 
 article {
     display: flex;
     flex-direction: column;
-    gap: 0.7em
+    gap: 0.7em;
 }
 
 h3 {
@@ -16,15 +18,21 @@ h3 {
     text-align: center;
 }
 
-p {
+p, a, a:hover {
     font-family: Roboto Condensed;
+}
+
+p {
     font-size: 1.2em;
 }
 
 a {
-    font-family: Roboto Condensed;
     font-weight: bold;
     color: black
+}
+
+a:hover {
+    font-size: 1.5em;
 }
 
 i {

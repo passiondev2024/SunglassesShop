@@ -8,11 +8,13 @@ import { HomeComponent } from './home/home.component';
 import { RouterOutlet } from '@angular/router';
 import { SunglassesModule } from './sunglasses/sunglasses.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SendMessageComponent } from './send-message/send-message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    SendMessageComponent,
   ],
   imports: [
     BrowserModule,
