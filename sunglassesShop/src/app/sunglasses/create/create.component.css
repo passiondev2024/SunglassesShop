@@ -49,4 +49,5 @@ input.submit:hover {
     color: white;
     font-size: 2em;
     letter-spacing: 0.3em;
+    transition: 0.3s ease-in-out
 }
