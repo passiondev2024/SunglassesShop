@@ -25,7 +25,7 @@ ul li a {
 
 ul li a:hover {
     font-size: 2em;
-    text-decoration: underline;
+    letter-spacing: 0.3em;
 }
 
 .img-container {

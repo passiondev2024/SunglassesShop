@@ -35,7 +35,7 @@ a:hover {
     background: black;
     color: white;
     font-size: 2em;
-    text-decoration: underline;
+    letter-spacing: 0.3em;
 }
 
 
