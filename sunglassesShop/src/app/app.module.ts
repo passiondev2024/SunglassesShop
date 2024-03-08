@@ -8,13 +8,12 @@ import { HomeComponent } from './home/home.component';
 import { RouterOutlet } from '@angular/router';
 import { SunglassesModule } from './sunglasses/sunglasses.module';
 import { HttpClientModule } from '@angular/common/http';
-import { SendMessageComponent } from './send-message/send-message.component';
+import { MessageModule } from './message/message.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SendMessageComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +21,8 @@ import { SendMessageComponent } from './send-message/send-message.component';
     CoreModule,
     RouterOutlet,
     SunglassesModule,
-    HttpClientModule
+    HttpClientModule,
+    MessageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
