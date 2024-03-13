@@ -9,6 +9,7 @@ import { RouterOutlet } from '@angular/router';
 import { SunglassesModule } from './sunglasses/sunglasses.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageModule } from './message/message.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MessageModule } from './message/message.module';
     RouterOutlet,
     SunglassesModule,
     HttpClientModule,
-    MessageModule
+    MessageModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

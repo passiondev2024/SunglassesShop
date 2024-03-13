@@ -4,6 +4,7 @@ import { CreateComponent } from './create/create.component';
 import { SunglassesRoutingModule } from './sunglasses-routing.module';
 import { CatalogComponent } from './catalog/catalog.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SunglassesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class SunglassesModule { }

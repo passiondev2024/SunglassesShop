@@ -5,12 +5,7 @@
         <div class="brand">
             <label for="brand">Brand</label>
             <input
-            [ngStyle]="{'border-color': form.get('brand')?.touched 
-            ? form.get('brand')?.errors 
-            ? 'red' 
-            : 'green'
-            : ''
-            }"
+            [appFormStyles]="form.get('brand')?.value || null"
             type="text" 
             id="brand" 
             placeholder="Brand"
