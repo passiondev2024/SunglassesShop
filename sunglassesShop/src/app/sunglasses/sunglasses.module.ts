@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CreateComponent } from './create/create.component';
 import { SunglassesRoutingModule } from './sunglasses-routing.module';
 import { CatalogComponent } from './catalog/catalog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { CatalogComponent } from './catalog/catalog.component';
   ],
   imports: [
     CommonModule,
-    SunglassesRoutingModule
+    SunglassesRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class SunglassesModule { }

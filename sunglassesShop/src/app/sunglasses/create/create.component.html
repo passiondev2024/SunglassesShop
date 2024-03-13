@@ -1,49 +1,175 @@
-<form action="" method="">
+<form [formGroup]="form" (ngSubmit)="createHandler()">
     <fieldset>
         <legend>Add Sunglasses</legend>
 
         <div class="brand">
             <label for="brand">Brand</label>
-            <input type="text" id="brand" placeholder="Brand">
+            <input
+            [ngStyle]="{'border-color': form.get('brand')?.touched 
+            ? form.get('brand')?.errors 
+            ? 'red' 
+            : 'green'
+            : ''
+            }"
+            type="text" 
+            id="brand" 
+            placeholder="Brand"
+            formControlName="brand"
+            >
         </div>
+
+        <ng-container *ngIf="form.get('brand')?.touched">
+            <p class="error" *ngIf="form.get('brand')?.errors?.['required']">Brand is required</p>
+        </ng-container>
         
         <div class="model">
             <label for="model">Model</label>
-            <input type="text" id="model" placeholder="Model">
+            <input
+            [ngStyle]="{'border-color': form.get('model')?.touched 
+            ? form.get('model')?.errors 
+            ? 'red' 
+            : 'green'
+            : ''
+            }"
+            type="text" 
+            id="model" 
+            placeholder="Model"
+            formControlName="model"
+            >
         </div>
+
+        <ng-container *ngIf="form.get('model')?.touched">
+            <p class="error" *ngIf="form.get('model')?.errors?.['required']">Model is required</p>
+        </ng-container>
 
         <div class="price">
             <label for="price">Price</label>
-            <input type="number" id="price" placeholder="Price">
+            <input
+            [ngStyle]="{'border-color': form.get('price')?.touched 
+            ? form.get('price')?.errors 
+            ? 'red' 
+            : 'green'
+            : ''
+            }"
+            type="number" 
+            id="price" 
+            placeholder="Price"
+            formControlName="price"
+            >
         </div>
+
+        <ng-container *ngIf="form.get('price')?.touched">
+            <p class="error" *ngIf="form.get('price')?.errors?.['required']">Price is required</p>
+        </ng-container>
 
         <div class="imageUrl">
             <label for="imageUrl">Image URL</label>
-            <input type="text" id="imageUrl" placeholder="Image URL">
+            <input
+            [ngStyle]="{'border-color': form.get('imageUrl')?.touched 
+            ? form.get('imageUrl')?.errors 
+            ? 'red' 
+            : 'green'
+            : ''
+            }"
+            type="text" 
+            id="imageUrl" 
+            placeholder="Image URL"
+            formControlName="imageUrl"
+            >
         </div>
+
+        <ng-container *ngIf="form.get('imageUrl')?.touched">
+            <p class="error" *ngIf="form.get('imageUrl')?.errors?.['required']">ImageUrl is required</p>
+        </ng-container>
 
         <div class="gender">
             <label for="gender">Gender</label>
-            <input type="text" id="gender" placeholder="Gender">
+            <select
+            [ngStyle]="{'border-color': form.get('gender')?.touched 
+            ? form.get('gender')?.errors 
+            ? 'red' 
+            : 'green'
+            : ''
+            }"
+            name="gender" 
+            id="gender" 
+            formControlName="gender"
+            >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="unisex">Unisex</option>
+              </select>
         </div>
+
+        <ng-container *ngIf="form.get('gender')?.touched">
+            <p class="error" *ngIf="form.get('gender')?.errors?.['required']">Gender is required</p>
+        </ng-container>
 
         <div class="shape">
             <label for="shape">Shape</label>
-            <input type="text" id="shape" placeholder="Shape">
+            <input 
+            [ngStyle]="{'border-color': form.get('shape')?.touched 
+            ? form.get('shape')?.errors 
+            ? 'red' 
+            : 'green'
+            : ''
+            }"
+            type="text" 
+            id="shape" 
+            placeholder="Shape"
+            formControlName="shape"
+            >
         </div>
+
+        <ng-container *ngIf="form.get('shape')?.touched">
+            <p class="error" *ngIf="form.get('shape')?.errors?.['required']">Shape is required</p>
+        </ng-container>
 
         <div class="frameColor">
             <label for="frameColor">Frame color</label>
-            <input type="text" id="frameColor" placeholder="Frame Color">
+            <input
+            [ngStyle]="{'border-color': form.get('frameColor')?.touched 
+            ? form.get('frameColor')?.errors 
+            ? 'red' 
+            : 'green'
+            : ''
+            }"
+            type="text" 
+            id="frameColor" 
+            placeholder="Frame Color"
+            formControlName="frameColor"
+            >
         </div>
+
+        <ng-container *ngIf="form.get('frameColor')?.touched">
+            <p class="error" *ngIf="form.get('frameColor')?.errors?.['required']">Frame color is required</p>
+        </ng-container>
 
         <div class="glassColor">
             <label for="glassColor">Glass color</label>
-            <input type="text" id="glassColor" placeholder="Glass color">
+            <input
+            [ngStyle]="{'border-color': form.get('glassColor')?.touched 
+            ? form.get('glassColor')?.errors 
+            ? 'red' 
+            : 'green'
+            : ''
+            }"
+            type="text" 
+            id="glassColor" 
+            placeholder="Glass color"
+            formControlName="glassColor"
+            >
         </div>
 
+        <ng-container *ngIf="form.get('glassColor')?.touched">
+            <p class="error" *ngIf="form.get('glassColor')?.errors?.['required']">Glass color is required</p>
+        </ng-container>
+
         <div class="submit-container">
-          <input type="submit" value="Create" class="submit">  
+          <button
+          class="submit"
+          [disabled]="form.invalid"
+          >Create</button>
         </div>
         
     </fieldset>

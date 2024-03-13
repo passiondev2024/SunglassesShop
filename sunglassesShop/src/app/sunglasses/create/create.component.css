@@ -29,14 +29,15 @@ label {
 }
 
 input[type="text"],
-input[type="number"] {
+input[type="number"],
+select {
     border: 1px solid black;
     border-radius: 0.3em;
     padding: 0.5em;
     width: 20em;
 }
 
-input.submit {
+button.submit {
     font-family: Bebas Neue;
     font-size: 1.5em;
     padding: 0.3em 1.2em;
@@ -44,10 +45,31 @@ input.submit {
     border-radius: 0.5em;
 }
 
-input.submit:hover {
+button.submit:hover {
     background: black;
     color: white;
     font-size: 2em;
     letter-spacing: 0.3em;
     transition: 0.3s ease-in-out
+}
+
+button.submit[disabled]:hover {
+    background: grey;
+    color: white;
+    font-size: 2em;
+    letter-spacing: 0.3em;
+    transition: 0.3s ease-in-out
+}
+
+.error {
+    font-family: Bebas Neue;
+    font-size: 1.2em;
+    color: red
+}
+
+
+input.ng-touched.ng-invalid::placeholder {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: red
 }
