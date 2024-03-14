@@ -9,7 +9,7 @@ import { FormStylesDirective } from './styles/form-styles.directive';
     FormStylesDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     FormStylesDirective
