@@ -54,7 +54,9 @@
             ></textarea>
         </div>
 
-        <p class="error" *ngIf="inputMessage?.value">{{inputMessage?.errors?.['maxlength'].length}}</p>
+        <p class="error" *ngIf="inputMessage.value">
+            Number of characters remaining: {{100 - inputMessage.value.length}}
+        </p>
 
         <ng-container *ngIf="inputMessage.touched">
             <p class="error" *ngIf="inputMessage?.errors?.['required']">The message is required</p>
