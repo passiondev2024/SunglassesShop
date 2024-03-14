@@ -1,24 +1,72 @@
-<form action="" method="">
+<form #form="ngForm" (ngSubmit)="sendMessageHandler(form)">
     <fieldset>
         <legend>Send Message</legend>
 
         <div class="name">
             <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Name">
+            <input 
+            type="text" 
+            name="name"
+            id="name" 
+            placeholder="Enter your name (e.g. Ivan Ivanov)"
+            ngModel
+            #inputName="ngModel"
+            appFormStyles
+            required
+            maxlength="5"
+            >
         </div>
+
+        <ng-container *ngIf="inputName.touched">
+            <p class="error" *ngIf="inputName?.errors?.['required']">The name is required</p>
+            <p class="error" *ngIf="inputName?.errors?.['maxlength']">The name can be a maximum of {{inputName?.errors?.['maxlength'].requiredLength}} characters</p>
+        </ng-container>
         
         <div class="email">
             <label for="email">Email</label>
-            <input type="text" id="email" placeholder="Email">
+            <input 
+            type="text" 
+            name="email"
+            id="email" 
+            placeholder="Enter your name (e.g. ivan@gmail.com)"
+            ngModel
+            #inputEmail="ngModel"
+            appFormStyles
+            required
+            >
         </div>
+
+        <ng-container *ngIf="inputEmail.touched">
+            <p class="error" *ngIf="inputEmail?.errors?.['required']">The email is required</p>
+        </ng-container>
 
         <div class="message">
             <label for="message">Message</label>
-            <textarea name="message" id="message" cols="30" rows="10" placeholder="Write your message"></textarea>
+            <textarea 
+            name="message" 
+            id="message" 
+            cols="30" 
+            rows="10" 
+            placeholder="Write your message with a maximum of 100 characters"
+            ngModel
+            #inputMessage="ngModel"
+            appFormStyles
+            required
+            ></textarea>
         </div>
 
+        <ng-container *ngIf="inputMessage.touched">
+            <p class="error" *ngIf="inputMessage?.errors?.['required']">The message is required</p>
+        </ng-container>
+
         <div class="submit-container">
-            <input type="submit" value="Create" class="submit">  
+            <!-- <input type="submit" value="Create" class="submit">   -->
+            <button
+            class="submit"
+            [disabled]="form.invalid"
+            >
+            Send
+            </button>
           </div>
         
     </fieldset>

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { MessageRoutingModule } from './message-routing.module';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -12,7 +14,9 @@ import { MessageRoutingModule } from './message-routing.module';
   ],
   imports: [
     CommonModule,
-    MessageRoutingModule
+    MessageRoutingModule,
+    FormsModule,
+    SharedModule
   ]
 })
 export class MessageModule { }
