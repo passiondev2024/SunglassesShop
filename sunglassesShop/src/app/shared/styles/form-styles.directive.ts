@@ -1,59 +1,32 @@
-import { Directive, ElementRef, HostListener, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
-import { AbstractControl, NG_ASYNC_VALIDATORS, NgControl, ValidationErrors, Validator } from '@angular/forms';
+import { Directive, ElementRef, HostListener, OnDestroy, Renderer2 } from '@angular/core';
+import { NgControl } from '@angular/forms';
 
 @Directive({
   selector: '[appFormStyles]'
 })
 
-export class FormStylesDirective {
- 
+export class FormStylesDirective implements OnDestroy {
+  blurListenner: (() => void) | undefined
+
   constructor(
     private el: ElementRef,
-    private render: Renderer2,
-    private control: NgControl
-  ){}
+    private renderer: Renderer2,
+    private control: NgControl,
+  ) { }
 
-  @HostListener('focus') onFocus() {
-    if(this.control.errors){
-              this.render.setStyle(this.el.nativeElement,
-                    'border-color',
-                    'red')
-            } else {
-              this.render.setStyle(this.el.nativeElement,
-                'border-color',
-                'green')
-            }
+  @HostListener('blur') onBlur() {
+    if (this.control.errors) {
+      this.renderer.setStyle(this.el.nativeElement,
+        'border-color',
+        'red')
+    } else {
+      this.renderer.setStyle(this.el.nativeElement,
+        'border-color',
+        'green')
+    }
   }
 
-   
+  ngOnDestroy(): void {
+    this.blurListenner?.()
+  }
 }
-
-
-
-
-
-// export class FormStylesDirective implements OnChanges {
-//   @Input('appFormStyles') invalidValue: boolean | undefined
-
-//   constructor(
-//     private formControl: NgControl,
-//     private el: ElementRef,
-//     private render: Renderer2
-//   ) { }
-
-//   ngOnChanges(changes: SimpleChanges): void {
-//     console.log(this.invalidValue)
-
-//     if(this.formControl.touched){
-//       if(this.formControl.errors){
-//         this.render.setStyle(this.el.nativeElement,
-//               'border-color',
-//               'red')
-//       } else {
-//         this.render.setStyle(this.el.nativeElement,
-//           'border-color',
-//           'green')
-//       }
-//     }
-//   }
-// }

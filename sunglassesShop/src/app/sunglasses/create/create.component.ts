@@ -8,14 +8,14 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class CreateComponent {
   form = this.fb.group({
-    brand: ['', [Validators.required]],
-    model: ['', [Validators.required]],
-    price: ['', [Validators.required]],
+    brand: ['', [Validators.required, Validators.maxLength(10)]],
+    model: ['', [Validators.required, Validators.maxLength(10)]],
+    price: ['', [Validators.required, Validators.min(1)]],
     imageUrl: ['', [Validators.required]],
     gender: ['', [Validators.required]],
-    shape: ['', [Validators.required]],
-    frameColor: ['', [Validators.required]],
-    glassColor: ['', [Validators.required]],
+    shape: ['', [Validators.required, Validators.maxLength(10)]],
+    frameColor: ['', [Validators.required, Validators.maxLength(10)]],
+    glassColor: ['', [Validators.required, Validators.maxLength(10)]],
   })
 
   constructor(private fb: FormBuilder){}

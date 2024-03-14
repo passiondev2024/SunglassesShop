@@ -14,18 +14,14 @@
         </div>
 
         <ng-container *ngIf="form.get('brand')?.touched">
-            <p class="error" *ngIf="form.get('brand')?.errors?.['required']">Brand is required</p>
+            <p class="error" *ngIf="form.get('brand')?.errors?.['required']">The brand is required</p>
+            <p class="error" *ngIf="form.get('brand')?.errors?.['maxlength']">The brand can be a maximum of {{form.get('brand')?.errors?.['maxlength'].requiredLength}} characters</p>
         </ng-container>
         
         <div class="model">
             <label for="model">Model</label>
             <input
-            [ngStyle]="{'border-color': form.get('model')?.touched 
-            ? form.get('model')?.errors 
-            ? 'red' 
-            : 'green'
-            : ''
-            }"
+            appFormStyles
             type="text" 
             id="model" 
             placeholder="Model"
@@ -34,18 +30,14 @@
         </div>
 
         <ng-container *ngIf="form.get('model')?.touched">
-            <p class="error" *ngIf="form.get('model')?.errors?.['required']">Model is required</p>
+            <p class="error" *ngIf="form.get('model')?.errors?.['required']">The model is required</p>
+            <p class="error" *ngIf="form.get('model')?.errors?.['maxlength']">The model can be a maximum of {{form.get('model')?.errors?.['maxlength'].requiredLength}} characters</p>
         </ng-container>
 
         <div class="price">
             <label for="price">Price</label>
             <input
-            [ngStyle]="{'border-color': form.get('price')?.touched 
-            ? form.get('price')?.errors 
-            ? 'red' 
-            : 'green'
-            : ''
-            }"
+            appFormStyles
             type="number" 
             id="price" 
             placeholder="Price"
@@ -54,18 +46,14 @@
         </div>
 
         <ng-container *ngIf="form.get('price')?.touched">
-            <p class="error" *ngIf="form.get('price')?.errors?.['required']">Price is required</p>
+            <p class="error" *ngIf="form.get('price')?.errors?.['required']">The price is required</p>
+            <p class="error" *ngIf="form.get('price')?.errors?.['min']">The price can be a minimum of {{form.get('price')?.errors?.['min'].min}} €</p>
         </ng-container>
 
         <div class="imageUrl">
             <label for="imageUrl">Image URL</label>
             <input
-            [ngStyle]="{'border-color': form.get('imageUrl')?.touched 
-            ? form.get('imageUrl')?.errors 
-            ? 'red' 
-            : 'green'
-            : ''
-            }"
+            appFormStyles
             type="text" 
             id="imageUrl" 
             placeholder="Image URL"
@@ -74,18 +62,13 @@
         </div>
 
         <ng-container *ngIf="form.get('imageUrl')?.touched">
-            <p class="error" *ngIf="form.get('imageUrl')?.errors?.['required']">ImageUrl is required</p>
+            <p class="error" *ngIf="form.get('imageUrl')?.errors?.['required']">The imageUrl is required</p>
         </ng-container>
 
         <div class="gender">
             <label for="gender">Gender</label>
             <select
-            [ngStyle]="{'border-color': form.get('gender')?.touched 
-            ? form.get('gender')?.errors 
-            ? 'red' 
-            : 'green'
-            : ''
-            }"
+            appFormStyles
             name="gender" 
             id="gender" 
             formControlName="gender"
@@ -97,18 +80,13 @@
         </div>
 
         <ng-container *ngIf="form.get('gender')?.touched">
-            <p class="error" *ngIf="form.get('gender')?.errors?.['required']">Gender is required</p>
+            <p class="error" *ngIf="form.get('gender')?.errors?.['required']">The gender is required</p>
         </ng-container>
 
         <div class="shape">
             <label for="shape">Shape</label>
             <input 
-            [ngStyle]="{'border-color': form.get('shape')?.touched 
-            ? form.get('shape')?.errors 
-            ? 'red' 
-            : 'green'
-            : ''
-            }"
+            appFormStyles
             type="text" 
             id="shape" 
             placeholder="Shape"
@@ -117,18 +95,14 @@
         </div>
 
         <ng-container *ngIf="form.get('shape')?.touched">
-            <p class="error" *ngIf="form.get('shape')?.errors?.['required']">Shape is required</p>
+            <p class="error" *ngIf="form.get('shape')?.errors?.['required']">The shape is required</p>
+            <p class="error" *ngIf="form.get('shape')?.errors?.['maxlength']">The shape can be a maximum of {{form.get('shape')?.errors?.['maxlength'].requiredLength}} characters</p>
         </ng-container>
 
         <div class="frameColor">
             <label for="frameColor">Frame color</label>
             <input
-            [ngStyle]="{'border-color': form.get('frameColor')?.touched 
-            ? form.get('frameColor')?.errors 
-            ? 'red' 
-            : 'green'
-            : ''
-            }"
+            appFormStyles
             type="text" 
             id="frameColor" 
             placeholder="Frame Color"
@@ -137,18 +111,14 @@
         </div>
 
         <ng-container *ngIf="form.get('frameColor')?.touched">
-            <p class="error" *ngIf="form.get('frameColor')?.errors?.['required']">Frame color is required</p>
+            <p class="error" *ngIf="form.get('frameColor')?.errors?.['required']">The frame color is required</p>
+            <p class="error" *ngIf="form.get('frameColor')?.errors?.['maxlength']">The frame color can be a maximum of {{form.get('frameColor')?.errors?.['maxlength'].requiredLength}} characters</p>
         </ng-container>
 
         <div class="glassColor">
             <label for="glassColor">Glass color</label>
             <input
-            [ngStyle]="{'border-color': form.get('glassColor')?.touched 
-            ? form.get('glassColor')?.errors 
-            ? 'red' 
-            : 'green'
-            : ''
-            }"
+            appFormStyles
             type="text" 
             id="glassColor" 
             placeholder="Glass color"
@@ -157,7 +127,8 @@
         </div>
 
         <ng-container *ngIf="form.get('glassColor')?.touched">
-            <p class="error" *ngIf="form.get('glassColor')?.errors?.['required']">Glass color is required</p>
+            <p class="error" *ngIf="form.get('glassColor')?.errors?.['required']">The glass color is required</p>
+            <p class="error" *ngIf="form.get('glassColor')?.errors?.['maxlength']">The glass color can be a maximum of {{form.get('glassColor')?.errors?.['maxlength'].requiredLength}} characters</p>
         </ng-container>
 
         <div class="submit-container">
