@@ -8,7 +8,7 @@
             appFormStyles
             type="text" 
             id="brand" 
-            placeholder="Brand"
+            placeholder="Enter brand (e.g. Ray-Ban)"
             formControlName="brand"
             >
         </div>
@@ -24,7 +24,7 @@
             appFormStyles
             type="text" 
             id="model" 
-            placeholder="Model"
+            placeholder="Enter model (e.g. Aviator)"
             formControlName="model"
             >
         </div>
@@ -40,14 +40,14 @@
             appFormStyles
             type="number" 
             id="price" 
-            placeholder="Price"
+            placeholder="Enter price (e.g. 50€)"
             formControlName="price"
             >
         </div>
 
         <ng-container *ngIf="form.get('price')?.touched">
             <p class="error" *ngIf="form.get('price')?.errors?.['required']">The price is required</p>
-            <p class="error" *ngIf="form.get('price')?.errors?.['min']">The price can be a minimum of {{form.get('price')?.errors?.['min'].min}} €</p>
+            <p class="error" *ngIf="form.get('price')?.errors?.['min']">The price can be a minimum of {{form.get('price')?.errors?.['min'].min}}€</p>
         </ng-container>
 
         <div class="imageUrl">
@@ -56,13 +56,14 @@
             appFormStyles
             type="text" 
             id="imageUrl" 
-            placeholder="Image URL"
+            placeholder="Enter URL starting with http:// or https://"
             formControlName="imageUrl"
             >
         </div>
 
         <ng-container *ngIf="form.get('imageUrl')?.touched">
             <p class="error" *ngIf="form.get('imageUrl')?.errors?.['required']">The imageUrl is required</p>
+            <p class="error" *ngIf="form.get('imageUrl')?.errors?.['invalidUrl']">The URL must be starts with http:// or https://</p>
         </ng-container>
 
         <div class="gender">
@@ -89,7 +90,7 @@
             appFormStyles
             type="text" 
             id="shape" 
-            placeholder="Shape"
+            placeholder="Enter shape (e.g. Rectangle)"
             formControlName="shape"
             >
         </div>
@@ -105,7 +106,7 @@
             appFormStyles
             type="text" 
             id="frameColor" 
-            placeholder="Frame Color"
+            placeholder="Enter frame color (e.g. Gold)"
             formControlName="frameColor"
             >
         </div>
@@ -121,7 +122,7 @@
             appFormStyles
             type="text" 
             id="glassColor" 
-            placeholder="Glass color"
+            placeholder="Enter glass color (e.g. Black)"
             formControlName="glassColor"
             >
         </div>

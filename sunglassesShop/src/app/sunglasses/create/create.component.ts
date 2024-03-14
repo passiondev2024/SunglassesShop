@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { imageUrlValidator } from 'src/app/shared/validators/image-url-validator';
 
 @Component({
   selector: 'app-create',
@@ -11,7 +12,7 @@ export class CreateComponent {
     brand: ['', [Validators.required, Validators.maxLength(10)]],
     model: ['', [Validators.required, Validators.maxLength(10)]],
     price: ['', [Validators.required, Validators.min(1)]],
-    imageUrl: ['', [Validators.required]],
+    imageUrl: ['', [Validators.required, imageUrlValidator()]],
     gender: ['', [Validators.required]],
     shape: ['', [Validators.required, Validators.maxLength(10)]],
     frameColor: ['', [Validators.required, Validators.maxLength(10)]],
