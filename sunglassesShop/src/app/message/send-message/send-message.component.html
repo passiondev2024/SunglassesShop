@@ -13,13 +13,11 @@
             #inputName="ngModel"
             appFormStyles
             required
-            maxlength="5"
             >
         </div>
 
         <ng-container *ngIf="inputName.touched">
             <p class="error" *ngIf="inputName?.errors?.['required']">The name is required</p>
-            <p class="error" *ngIf="inputName?.errors?.['maxlength']">The name can be a maximum of {{inputName?.errors?.['maxlength'].requiredLength}} characters</p>
         </ng-container>
         
         <div class="email">
@@ -52,8 +50,11 @@
             #inputMessage="ngModel"
             appFormStyles
             required
+            maxlength="100"
             ></textarea>
         </div>
+
+        <p class="error" *ngIf="inputMessage?.value">{{inputMessage?.errors?.['maxlength'].length}}</p>
 
         <ng-container *ngIf="inputMessage.touched">
             <p class="error" *ngIf="inputMessage?.errors?.['required']">The message is required</p>
