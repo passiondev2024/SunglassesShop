@@ -16,7 +16,6 @@ export class FormStylesDirective implements OnDestroy {
   ) { }
 
   @HostListener('blur') onBlur() {
-    console.log(this.control)
     if (this.control.errors) {
       this.renderer.setStyle(this.el.nativeElement,
         'border-color',

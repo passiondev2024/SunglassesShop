@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { emailValidator } from 'src/app/shared/validators/email-validator';
 import { matchPassword } from 'src/app/shared/validators/match-passwords-validator';
@@ -18,11 +18,17 @@ export class RegisterComponent {
       rePassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
     },
       {
-        validators: [matchPassword()]
+        validators: [matchPassword(this.renderer, this.el)]
       })
   })
 
-  constructor(private fb: FormBuilder) { }
+  // el не е референция на инпута а на цялата форма
+  constructor(
+    private fb: FormBuilder,
+    private renderer: Renderer2,
+    private el: ElementRef
+    
+    ) { }
 
   register() {
     if (this.form.invalid) {
