@@ -10,12 +10,17 @@ import { emailValidator } from 'src/app/shared/validators/email-validator';
 export class LoginComponent {
   form = this.fb.group({
     email: ['', [Validators.required, emailValidator()]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
+    password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
   })
 
   constructor(private fb: FormBuilder) { }
   login() {
+    if(this.form.invalid){
+      console.log('Invalid form')
+      return
+    }
 
+    console.log(this.form.value)
   }
 
 }

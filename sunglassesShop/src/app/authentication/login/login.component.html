@@ -36,6 +36,9 @@
             <p class="error" *ngIf="form.get('password')?.errors?.['minlength']">
                 The password must be at least {{form.get('password')?.errors?.['minlength'].requiredLength}} characters
             </p>
+            <p class="error" *ngIf="form.get('password')?.errors?.['maxlength']">
+                The password can be a maximum of {{form.get('password')?.errors?.['maxlength'].requiredLength}} characters
+            </p>
         </ng-container>
 
         <div class="submit-container">
