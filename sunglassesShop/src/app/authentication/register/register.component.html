@@ -1,0 +1,128 @@
+<form [formGroup]="form" (ngSubmit)="register()">
+    <fieldset>
+        <legend>Register</legend>
+
+        <div class="firstName">
+            <label for="name">First name</label>
+            <input 
+            type="text" 
+            name="firstName"
+            id="firstName" 
+            placeholder="Enter your first name (e.g. Ivan)"
+            formControlName="firstName"
+            appFormStyles
+            >
+        </div>
+
+        <ng-container *ngIf="form.get('firstName')?.touched">
+            <p class="error" *ngIf="form.get('firstName')?.errors?.['required']">The first name is required</p>
+            <p class="error" *ngIf="form.get('firstName')?.errors?.['maxlength']">
+                The first name can be a maximum of {{form.get('firstName')?.errors?.['maxlength'].requiredLength}} characters
+            </p>
+        </ng-container>
+
+        <div class="lastName">
+            <label for="lastName">Last name</label>
+            <input 
+            type="text" 
+            name="lastName"
+            id="lastName" 
+            placeholder="Enter your last name (e.g. Ivanov)"
+            formControlName="lastName"
+            appFormStyles
+            >
+        </div>
+
+        <ng-container *ngIf="form.get('lastName')?.touched">
+            <p class="error" *ngIf="form.get('lastName')?.errors?.['required']">The last name is required</p>
+            <p class="error" *ngIf="form.get('lastName')?.errors?.['maxlength']">
+                The last name can be a maximum of {{form.get('lastName')?.errors?.['maxlength'].requiredLength}} characters
+            </p>
+        </ng-container>
+
+        <div class="email">
+            <label for="email">Email</label>
+            <input 
+            type="text" 
+            name="email"
+            id="email" 
+            placeholder="Enter your email (e.g. ivan@gmail.com)"
+            formControlName="email"
+            appFormStyles
+            >
+        </div>
+
+        <ng-container *ngIf="form.get('email')?.touched">
+            <p class="error" *ngIf="form.get('email')?.errors?.['required']">The email is required</p>
+            <p class="error" *ngIf="form.get('email')?.errors?.['invalidEmail']">The email is invalid</p>
+        </ng-container>
+
+        <ng-container formGroupName="passwordsGroup">
+
+            <div class="password">
+                <label for="password">Password</label>
+                <input 
+                type="password" 
+                name="password"
+                id="password" 
+                placeholder="Enter your password (e.g. ivan1992)"
+                formControlName="password"
+                appFormStyles
+                >
+            </div>
+
+            <ng-container *ngIf="form.get('passwordsGroup')?.get('password')?.touched">
+                <p class="error" *ngIf="form.get('passwordsGroup')?.get('password')?.errors?.['required']">
+                    The password is required
+                </p>
+                <p class="error" *ngIf="form.get('passwordsGroup')?.get('password')?.errors?.['minlength']">
+                    The password must be at least {{form.get('passwordsGroup')?.get('password')?.errors?.['minlength'].requiredLength}} characters
+                </p>
+                <p class="error" *ngIf="form.get('passwordsGroup')?.get('password')?.errors?.['maxlength']">
+                    The password can be a maximum of {{form.get('passwordsGroup')?.get('password')?.errors?.['maxlength'].requiredLength}} characters
+                </p>
+            </ng-container>
+
+            <div class="rePassword">
+                <label for="rePassword">Repeat Password</label>
+                <input 
+                type="password" 
+                name="rePassword"
+                id="rePassword" 
+                placeholder="Repeat password"
+                formControlName="rePassword"
+                appFormStyles
+                >
+            </div>
+
+            <ng-container *ngIf="form.get('passwordsGroup')?.get('rePassword')?.touched">
+                <p class="error" *ngIf="form.get('passwordsGroup')?.get('rePassword')?.errors?.['required']">
+                    The repeat password is required
+                </p>
+                <p class="error" *ngIf="form.get('passwordsGroup')?.get('rePassword')?.errors?.['minlength']">
+                    The repeat password must be at least {{form.get('passwordsGroup')?.get('rePassword')?.errors?.['minlength'].requiredLength}} characters
+                </p>
+                <p class="error" *ngIf="form.get('passwordsGroup')?.get('rePassword')?.errors?.['maxlength']">
+                    The repeat password can be a maximum of {{form.get('passwordsGroup')?.get('rePassword')?.errors?.['maxlength'].requiredLength}} characters
+                </p>
+                <p class="error" 
+                *ngIf="form.get('passwordsGroup')?.errors?.['differentPasswords']">
+                The repeat password must be the same as the password
+                </p> 
+            </ng-container>
+
+
+        </ng-container>
+
+        <div class="submit-container">
+            <button
+            class="submit"
+            [disabled]="form.invalid"
+            >Register</button>
+        </div>
+
+        
+        
+    </fieldset>
+
+</form>
