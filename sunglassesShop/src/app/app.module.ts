@@ -10,6 +10,7 @@ import { SunglassesModule } from './sunglasses/sunglasses.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageModule } from './message/message.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SharedModule } from './shared/shared.module';
     SunglassesModule,
     HttpClientModule,
     MessageModule,
-    SharedModule
+    SharedModule,
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

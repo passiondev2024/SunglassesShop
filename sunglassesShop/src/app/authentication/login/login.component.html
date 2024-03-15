@@ -1,0 +1,50 @@
+<form [formGroup]="form" (ngSubmit)="login()">
+    <fieldset>
+        <legend>Login</legend>
+
+        <div class="email">
+            <label for="email">Email</label>
+            <input 
+            type="text" 
+            name="email"
+            id="email" 
+            placeholder="Enter your email (e.g. ivan@gmail.com)"
+            formControlName="email"
+            appFormStyles
+            >
+        </div>
+
+        <ng-container *ngIf="form.get('email')?.touched">
+            <p class="error" *ngIf="form.get('email')?.errors?.['required']">The email is required</p>
+            <p class="error" *ngIf="form.get('email')?.errors?.['invalidEmail']">The email is invalid</p>
+        </ng-container>
+
+        <div class="password">
+            <label for="password">Password</label>
+            <input 
+            type="password" 
+            name="password"
+            id="password" 
+            placeholder="Enter your password (e.g. ivan1992)"
+            formControlName="password"
+            appFormStyles
+            >
+        </div>
+
+        <ng-container *ngIf="form.get('password')?.touched">
+            <p class="error" *ngIf="form.get('password')?.errors?.['required']">The password is required</p>
+            <p class="error" *ngIf="form.get('password')?.errors?.['minlength']">
+                The password must be at least {{form.get('password')?.errors?.['minlength'].requiredLength}} characters
+            </p>
+        </ng-container>
+
+        <div class="submit-container">
+            <button
+            class="submit"
+            [disabled]="form.invalid"
+            >Login</button>
+          </div>
+        
+    </fieldset>
+
+</form>
