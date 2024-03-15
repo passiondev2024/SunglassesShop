@@ -59,9 +59,13 @@ button.submit[disabled]:hover {
     transition: 0.3s ease-in-out
 }
 
-.error {
+.error,
+.remainingCharacters {
     font-family: Bebas Neue;
     font-size: 1.2em;
+}
+
+.error {
     color: red
 }
 
