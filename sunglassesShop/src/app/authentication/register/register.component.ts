@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { emailValidator } from 'src/app/shared/validators/email-validator';
 import { matchPassword } from 'src/app/shared/validators/match-passwords-validator';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,10 @@ export class RegisterComponent {
       })
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private authenticationService: AuthenticationService
+    ) { }
 
   register() {
     if (this.form.invalid) {
@@ -30,6 +34,20 @@ export class RegisterComponent {
       return
     }
 
-    console.log(this.form.value)
+    const {
+      firstName,
+      lastName,
+      email,
+      passwordsGroup: { password, rePassword } = {}
+    } = this.form.value
+
+    this.authenticationService
+    .register(firstName!, lastName!, email!, password!)
+    .subscribe({
+      next: user=>{
+        console.log(user)
+      }
+    })
+
   }
 }

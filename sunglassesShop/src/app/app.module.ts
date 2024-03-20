@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MessageModule } from './message/message.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { AppInterceptorProvider } from './app.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
     SharedModule,
     AuthenticationModule
   ],
-  providers: [],
+  providers: [AppInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
