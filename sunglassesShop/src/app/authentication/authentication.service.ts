@@ -13,4 +13,9 @@ export class AuthenticationService {
     return this.http
     .post('/api/users/register', {firstName, lastName, email, password})
   }
+
+  login(email: string, password: string){
+    return this.http
+    .post('/api/users/login', {email, password})
+  }
 }
