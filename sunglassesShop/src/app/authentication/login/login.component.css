@@ -5,7 +5,7 @@ form {
 
 fieldset {
     margin-top: 1em;
-    padding: 2em 5em;
+    padding: 2em 5em 1em 5em;
 }
 
 legend {
@@ -69,6 +69,12 @@ input.ng-touched.ng-invalid::placeholder {
     font-size: 1.2em;
     font-weight: bold;
     color: red
+}
+
+.goToRegister {
+    font-family: Bebas Neue;
+    text-align: center;
+    margin-top: 2em;
 }
 
 
