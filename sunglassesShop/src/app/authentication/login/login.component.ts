@@ -29,19 +29,24 @@ export class LoginComponent {
 
     const { email, password } = this.form.value
 
-    this.authenticationService.login(email!, password!).subscribe({
-      next: currentUser => {
-        this.router.navigate(['/catalog'])
-      },
-      error: (responseError: HttpErrorResponse) => {
-        alert(responseError.error.message)
+    if (typeof email === 'string' && typeof password === 'string') {
+      this.authenticationService.login(email, password).subscribe({
+        next: currentUser => {
+          this.router.navigate(['/catalog'])
+        },
+        error: (responseError: HttpErrorResponse) => {
+          alert(responseError.error.message)
 
-        this.form.setValue({
-          email: '',
-          password: ''
-        })
-      }
-    })
+          // Заради стиловете за валидация не използвам this.form.reset()
+          // Да измисля как да го оправя
+          this.form.setValue({
+            email: '',
+            password: ''
+          })
+        }
+      })
+    } else {
+      alert('Invalid login data. Please try again.');
+    }
   }
-
 }

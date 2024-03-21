@@ -44,27 +44,33 @@ export class RegisterComponent {
       passwordsGroup: { password, rePassword } = {}
     } = this.form.value
 
-    this.authenticationService
-      .register(firstName!, lastName!, email!, password!)
-      .subscribe({
-        next: user => {
-          this.router.navigate(['/catalog'])
-        },
-        error: (responseError: HttpErrorResponse) => {
-          alert(responseError.error.message)
+    if (
+      typeof firstName === 'string' &&
+      typeof lastName === 'string' &&
+      typeof email === 'string' &&
+      typeof password === 'string'
+    ) {
+      this.authenticationService.register(firstName, lastName, email, password).subscribe({
+          next: user => {
+            this.router.navigate(['/catalog'])
+          },
+          error: (responseError: HttpErrorResponse) => {
+            alert(responseError.error.message)
 
-          this.form.setValue({
-            firstName: '',
-            lastName: '',
-            email: '',
-            passwordsGroup:
-            {
-              password: '',
-              rePassword: ''
-            }
-          })
-        }
-      })
-
+            this.form.setValue({
+              firstName: '',
+              lastName: '',
+              email: '',
+              passwordsGroup:
+              {
+                password: '',
+                rePassword: ''
+              }
+            })
+          }
+        })
+    } else {
+      alert('Invalid register data. Please try again.');
+    }
   }
 }
