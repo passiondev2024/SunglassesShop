@@ -38,4 +38,8 @@ img {
     height: auto;
 }
 
+.logout {
+    cursor: pointer;
+}
+
 

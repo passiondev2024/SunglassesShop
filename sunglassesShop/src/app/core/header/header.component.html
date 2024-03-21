@@ -3,8 +3,8 @@
 
         <div class="img-container">
             <a routerLink="/home">
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/007/126/772/small/aviator-sunglasses-icon-vector.jpg"
-                alt="sunglasses-image">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/007/126/772/small/aviator-sunglasses-icon-vector.jpg"
+                    alt="sunglasses-image">
             </a>
         </div>
 
@@ -15,7 +15,7 @@
                 <li><a routerLink="/create">Create</a></li>
                 <li><a routerLink="/login">Login</a></li>
                 <li><a routerLink="/register">Register</a></li>
-                <li><a routerLink="/logout">Logout</a></li>
+                <li class="logout" (click)="logout()"><a>Logout</a></li>
             </ul>
         </nav>
     </div>

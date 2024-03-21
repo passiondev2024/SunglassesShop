@@ -35,16 +35,45 @@ export class AppInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(
-      catchError((error:HttpErrorResponse)=>{
-        
-        throw error
-      })
+    //   catchError((error:HttpErrorResponse)=>{
+
+    //     console.log(error)
+    //     if(error.status===404){
+    //       return []
+    //     }
+    //     throw error
+    //   }
+    // )
+
+
       // catchError((error: HttpErrorResponse) => {
       //   // Тук може да извършите нужната обработка на грешката
       //   console.error('An error occurred:', error);
       //   // Връщаме нов Observable с грешката
       //   return throwError(error);
       // })
+
+    //   try {
+    //     let response = await fetch(host + url, options)
+
+    //     if (response.ok !== true) {
+
+    //         if (response.status === 404) {
+    //             return []
+    //         }
+
+    //         let error = await response.json()
+    //         throw new Error(error.message)
+    //     } else {
+    //         if (response.status === 204) {
+    //             return response
+    //         } else {
+    //             return response.json()
+    //         }
+    //     }
+    // } catch (error) {
+    //     throw error
+    // }
     )
   }
 }
@@ -54,4 +83,6 @@ export const AppInterceptorProvider: Provider = {
   useClass: AppInterceptor,
   multi: true
 }
+
+
 

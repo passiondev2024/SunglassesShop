@@ -17,6 +17,7 @@ export class AuthenticationService {
     const localStorageUser = localStorage.getItem(this.key)
     if (localStorageUser) {
       this.user = JSON.parse(localStorageUser)
+      console.log(this.user)
     } else {
       this.user = undefined
     }
@@ -33,16 +34,29 @@ export class AuthenticationService {
         localStorage.setItem(this.key, JSON.stringify(currentUser))
       })
       )
-  }
+    }
 
   login(email: string, password: string): Observable<User> {
     return this.http
       .post<User>('/api/users/login', { email, password })
       .pipe(tap(currentUser => {
         localStorage.setItem(this.key, JSON.stringify(currentUser))
-      }),
-
+      })
       )
+    }
+
+  logout(){
+    return this.http
+    //  { observe: 'response' }) -> С това казва върни целия http response
+      .get('/api/users/logout', { observe: 'response' })
+      .pipe(tap((response)=>{
+        console.log(response)
+        if(response.status===204 && !response.headers.has('Content-Type')){
+          localStorage.removeItem(this.key)
+        } else {
+          throw response
+        }
+      }))
   }
 }
 

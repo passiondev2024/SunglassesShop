@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { emailValidator } from 'src/app/shared/validators/email-validator';
 import { matchPassword } from 'src/app/shared/validators/match-passwords-validator';
 import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -25,8 +27,9 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authenticationService: AuthenticationService
-    ) { }
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) { }
 
   register() {
     if (this.form.invalid) {
@@ -42,12 +45,26 @@ export class RegisterComponent {
     } = this.form.value
 
     this.authenticationService
-    .register(firstName!, lastName!, email!, password!)
-    .subscribe({
-      next: user=>{
-        console.log(user)
-      }
-    })
+      .register(firstName!, lastName!, email!, password!)
+      .subscribe({
+        next: user => {
+          this.router.navigate(['/catalog'])
+        },
+        error: (responseError: HttpErrorResponse) => {
+          alert(responseError.error.message)
+
+          this.form.setValue({
+            firstName: '',
+            lastName: '',
+            email: '',
+            passwordsGroup:
+            {
+              password: '',
+              rePassword: ''
+            }
+          })
+        }
+      })
 
   }
 }
