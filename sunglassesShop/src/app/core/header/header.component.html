@@ -13,9 +13,9 @@
                 <li><a routerLink="/home">Home</a></li>
                 <li><a routerLink="/catalog">Catalog</a></li>
                 <li><a routerLink="/create">Create</a></li>
-                <li><a routerLink="/login">Login</a></li>
-                <li><a routerLink="/register">Register</a></li>
-                <li class="logout" (click)="logout()"><a>Logout</a></li>
+                <li *ngIf="!isLogged"><a routerLink="/login">Login</a></li>
+                <li *ngIf="!isLogged"><a routerLink="/register">Register</a></li>
+                <li *ngIf="isLogged" class="logout" (click)="logout()"><a>Logout</a></li>
             </ul>
         </nav>
     </div>

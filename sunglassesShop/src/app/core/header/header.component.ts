@@ -15,6 +15,11 @@ export class HeaderComponent {
     private router: Router
     ) { }
 
+  get isLogged():boolean{
+    console.log(this.authenticationService.isAuthenticated)
+    return this.authenticationService.isAuthenticated
+  }
+
   logout() {
     this.authenticationService.logout().subscribe({
       next: example => {
