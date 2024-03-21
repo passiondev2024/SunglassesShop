@@ -11,6 +11,6 @@ export class SunglassesService {
   constructor(private http: HttpClient) {}
 
   getSunglasses(){
-    return this.http.get(`${this.apiUrl}/data/sunglasses`)
+    return this.http.get('/api/data/sunglasses')
   }
 }

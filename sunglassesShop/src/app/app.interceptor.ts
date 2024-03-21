@@ -4,9 +4,10 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HTTP_INTERCEPTORS
+  HTTP_INTERCEPTORS,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { AuthenticationService } from './authentication/authentication.service';
 
@@ -33,7 +34,18 @@ export class AppInterceptor implements HttpInterceptor {
       }
     }
 
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((error:HttpErrorResponse)=>{
+        
+        throw error
+      })
+      // catchError((error: HttpErrorResponse) => {
+      //   // Тук може да извършите нужната обработка на грешката
+      //   console.error('An error occurred:', error);
+      //   // Връщаме нов Observable с грешката
+      //   return throwError(error);
+      // })
+    )
   }
 }
 

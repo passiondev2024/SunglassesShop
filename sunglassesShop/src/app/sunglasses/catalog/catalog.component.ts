@@ -17,7 +17,8 @@ export class CatalogComponent implements OnInit {
     this.sunglassesService.getSunglasses().subscribe({
       next: sunglasses => {
         console.log(sunglasses)
-      },
+      }
+      ,
       error: (error: HttpErrorResponse) => {
         if (error.status === 404) {
           this.isEmptyCollection = true
