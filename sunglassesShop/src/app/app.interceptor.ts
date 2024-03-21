@@ -17,8 +17,7 @@ export class AppInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if(request.url.startsWith('/api')){
       request = request.clone({
-        url: request.url.replace('/api', this.apiUrl),
-        withCredentials: true
+        url: request.url.replace('/api', this.apiUrl)
       })
     } 
 
