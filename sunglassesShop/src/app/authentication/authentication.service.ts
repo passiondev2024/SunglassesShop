@@ -8,23 +8,21 @@ import { User } from '../shared/types/user';
   providedIn: 'root'
 })
 export class AuthenticationService {
-
   key: string = 'auth'
 
-  user: User | undefined
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {
+  getUser(): User | undefined {
     const localStorageUser = localStorage.getItem(this.key)
     if (localStorageUser) {
-      this.user = JSON.parse(localStorageUser)
-      console.log(this.user)
+      return JSON.parse(localStorageUser)
     } else {
-      this.user = undefined
+      return undefined
     }
   }
 
   get isAuthenticated(): boolean {
-    return !!this.user
+    return !!this.getUser()
   }
 
   register(firstName: string, lastName: string, email: string, password: string): Observable<User> {
@@ -34,7 +32,7 @@ export class AuthenticationService {
         localStorage.setItem(this.key, JSON.stringify(currentUser))
       })
       )
-    }
+  }
 
   login(email: string, password: string): Observable<User> {
     return this.http
@@ -43,15 +41,14 @@ export class AuthenticationService {
         localStorage.setItem(this.key, JSON.stringify(currentUser))
       })
       )
-    }
+  }
 
-  logout(){
+  logout() {
     return this.http
-    //  { observe: 'response' }) -> С това казва върни целия http response
+      //  { observe: 'response' }) -> С това казва върни целия http response
       .get('/api/users/logout', { observe: 'response' })
-      .pipe(tap((response)=>{
-        console.log(response)
-        if(response.status===204 && !response.headers.has('Content-Type')){
+      .pipe(tap((response) => {
+        if (response.status === 204 && !response.headers.has('Content-Type')) {
           localStorage.removeItem(this.key)
         } else {
           throw response

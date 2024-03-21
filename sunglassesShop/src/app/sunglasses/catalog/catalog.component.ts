@@ -19,12 +19,12 @@ export class CatalogComponent implements OnInit {
         console.log(`sunglasses: ${sunglasses}`)
       }
       ,
-      error: (error: HttpErrorResponse) => {
-        if (error.status === 404) {
+      error: (responseError: HttpErrorResponse) => {
+        if (responseError.status === 404) {
           this.isEmptyCollection = true
           this.emptyCollectionMessage = 'No sunglasses yet'
         } else {
-          alert(error.statusText)
+          alert(responseError.error.message)
         }
       }
     })
