@@ -16,7 +16,6 @@ export class HeaderComponent {
     ) { }
 
   get isLogged():boolean{
-    console.log(this.authenticationService.isAuthenticated)
     return this.authenticationService.isAuthenticated
   }
 

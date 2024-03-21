@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { imageUrlValidator } from 'src/app/shared/validators/image-url-validator';
+import { SunglassesService } from '../sunglasses.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-create',
@@ -19,14 +22,78 @@ export class CreateComponent {
     glassColor: ['', [Validators.required, Validators.maxLength(10)]],
   })
 
-  constructor(private fb: FormBuilder){}
+  constructor(
+    private fb: FormBuilder,
+    private sunglassesService: SunglassesService,
+    private router:Router
+  ) { }
 
-  createHandler(){
-    if(this.form.invalid){
+  createHandler() {
+    if (this.form.invalid) {
       console.log('Invalid form')
       return
     }
 
-    console.log(this.form.value)
+    const {
+      brand,
+      model,
+      price,
+      imageUrl,
+      gender,
+      shape,
+      frameColor,
+      glassColor
+    } = this.form.value
+
+    if (
+      typeof brand === 'string' &&
+      typeof model === 'string' &&
+      typeof price === 'number' &&
+      typeof imageUrl === 'string' &&
+      typeof gender === 'string' &&
+      typeof shape === 'string' &&
+      typeof frameColor === 'string' &&
+      typeof glassColor === 'string'
+     ){
+      this.sunglassesService.createSunglasses(
+        brand,
+        model,
+        price,
+        imageUrl,
+        gender,
+        shape,
+        frameColor,
+        glassColor
+      ).subscribe({
+        next: newSunglasses=>{
+          this.router.navigate(['/catalog'])
+        }, 
+        error: (responseError:HttpErrorResponse)=>{
+          alert(responseError.error.message)
+          this.form.setValue({
+            brand: '',
+            model: '',
+            price: '',
+            imageUrl: '',
+            gender: '',
+            shape: '',
+            frameColor: '',
+            glassColor: '',
+          })
+        }
+      })
+    } else {
+      alert('Some form fields are invalid or missing')
+      this.form.setValue({
+        brand: '',
+        model: '',
+        price: '',
+        imageUrl: '',
+        gender: '',
+        shape: '',
+        frameColor: '',
+        glassColor: '',
+      })
+    }
   }
 }

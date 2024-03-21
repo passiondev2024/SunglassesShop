@@ -8,9 +8,23 @@ import { environment } from 'src/environments/environment.development';
 export class SunglassesService {
   apiUrl: string = environment.apiUrl
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getSunglasses(){
+  getSunglasses() {
     return this.http.get('/api/data/sunglasses')
+  }
+
+  createSunglasses(brand: string, model: string, price: number, imageUrl: string, gender: string, shape: string, frameColor: string, glassColor: string) {
+    return this.http
+      .post('/api/data/sunglasses', {
+        brand,
+        model,
+        price,
+        imageUrl,
+        gender,
+        shape,
+        frameColor,
+        glassColor
+      })
   }
 }
